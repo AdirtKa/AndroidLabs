@@ -1,9 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.ThirdLab" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <!-- Светлая тема приложения -->
+    <style name="Theme.ThirdLab" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <!-- Основные цвета -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Цвета фона -->
+        <item name="android:colorBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/purple_700</item>
+        <item name="android:navigationBarColor">@color/white</item>
+
+        <!-- Для Material Components -->
+        <item name="materialButtonStyle">@style/MyMaterialButtonStyle</item>
     </style>
 
-    <style name="Theme.ThirdLab" parent="Base.Theme.ThirdLab" />
 </resources>

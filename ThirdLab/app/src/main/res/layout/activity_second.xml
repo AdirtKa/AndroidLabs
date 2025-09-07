@@ -12,44 +12,35 @@
 
         <!-- Заголовок экрана -->
         <TextView
-            android:id="@+id/tvTitle1"
+            android:id="@+id/tvTitle2"
             style="@style/MyTitleText"
-            android:text="Activity 1"
+            android:text="Activity 2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <!-- ФИО и группа -->
+        <!-- Подводка -->
         <TextView
-            android:id="@+id/tvStudent"
+            android:id="@+id/tvFromFirst"
             style="@style/MyText"
-            android:text="Морозов Даниил Артемович, группа ИВТ-XX"
-            android:layout_marginTop="8dp"
+            android:text="В первом окне вы напечатали:"
+            android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <!-- Подсказка -->
+        <!-- Полученный текст -->
         <TextView
-            android:id="@+id/tvHint"
+            android:id="@+id/tvResult"
             style="@style/MyText"
-            android:text="Введите текст ниже:"
-            android:layout_marginTop="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <!-- Поле ввода -->
-        <EditText
-            android:id="@+id/etInput"
-            style="@style/MyEditTextStyle"
-            android:hint="Ваш текст"
+            android:textSize="18sp"
             android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <!-- Кнопка перехода -->
+        <!-- Кнопка назад -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnNext"
+            android:id="@+id/btnBack"
             style="@style/MyMaterialButtonStyle"
-            android:text="Перейти на 2"
+            android:text="Вернуться на 1 экран"
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
