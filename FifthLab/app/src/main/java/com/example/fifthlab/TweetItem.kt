@@ -1,5 +1,6 @@
 package com.example.fifthlab
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
@@ -17,49 +18,86 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+
 
 
 @Composable
 fun TweetItem(tweet: Tweet) {
     var isPressed by remember { mutableStateOf(false) }
+    var isExpanded by remember { mutableStateOf(false) }
 
-    // Анимация цвета фона
     val backgroundColor by animateColorAsState(
         targetValue = if (isPressed) Color.LightGray else Color.White
     )
 
-    // Анимация масштабирования
     val scale by animateFloatAsState(
         targetValue = if (isPressed) 0.95f else 1f
     )
 
-    Row(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .scale(scale)
             .background(backgroundColor)
             .clickable {
-                // Включаем эффект на короткое нажатие
                 isPressed = true
+                isExpanded = !isExpanded
             }
             .padding(12.dp)
     ) {
-        Image(
-            painter = painterResource(id = tweet.imageResId),
-            contentDescription = "Avatar",
-            modifier = Modifier
-                .size(56.dp)
-                .clip(CircleShape)
-        )
-        Spacer(modifier = Modifier.width(12.dp))
-        Text(text = tweet.text)
+        Row {
+            Image(
+                painter = painterResource(id = tweet.imageResId),
+                contentDescription = "Avatar",
+                modifier = Modifier
+                    .size(56.dp)
+                    .clip(CircleShape)
+            )
+            Spacer(modifier = Modifier.width(12.dp))
+            Text(text = tweet.text)
+        }
+
+        AnimatedVisibility(visible = isExpanded) {
+            Column(modifier = Modifier.padding(top = 8.dp)) {
+                Text(
+                    text = tweet.description,
+                    color = Color.Gray
+                )
+            }
+        }
     }
 
-    // Сбрасываем isPressed через 150 мс
     if (isPressed) {
         LaunchedEffect(Unit) {
             delay(150)
             isPressed = false
         }
     }
+}
+@Preview(showBackground = true)
+@Composable
+fun PreviewTweetItem(
+    @PreviewParameter(TweetPreviewProvider::class) tweet: Tweet
+) {
+    TweetItem(tweet = tweet)
+}
+
+
+// Провайдер тестовых твитов
+class TweetPreviewProvider : PreviewParameterProvider<Tweet> {
+    override val values = sequenceOf(
+        Tweet(
+            imageResId = R.drawable.avatar1,
+            text = "Пример твита",
+            description = "Это описание поста для превью."
+        ),
+        Tweet(
+            imageResId = R.drawable.avatar2,
+            text = "Kotlin рулит 🚀",
+            description = "Compose делает UI быстрее и проще."
+        )
+    )
 }

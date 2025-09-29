@@ -23,11 +23,28 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun TweetListScreen() {
     val tweets = listOf(
-        Tweet(R.drawable.avatar1, "Привет, это мой первый твит!"),
-        Tweet(R.drawable.avatar2, "Kotlin рулит 🚀"),
-        Tweet(R.drawable.avatar1, "Android Studio ❤️ Compose!"),
-        Tweet(R.drawable.avatar2, "Список работает как твиттер!")
+        Tweet(
+            R.drawable.avatar1,
+            "Привет, это мой первый твит!",
+            "Подробное описание моего первого твита. Здесь можно добавить больше текста 👇"
+        ),
+        Tweet(
+            R.drawable.avatar2,
+            "Kotlin рулит 🚀",
+            "Kotlin прост, выразителен и имеет мощный функционал для Android и backend."
+        ),
+        Tweet(
+            R.drawable.avatar1,
+            "Android Studio ❤️ Compose!",
+            "Jetpack Compose позволяет быстро и удобно создавать UI без XML."
+        ),
+        Tweet(
+            R.drawable.avatar2,
+            "Список работает как твиттер!",
+            "LazyColumn рендерит элементы по мере прокрутки, экономя память и ресурсы."
+        )
     )
+
 
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
