@@ -2,57 +2,69 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:fillViewport="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        style="@style/MyCard"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="?attr/android:colorBackground">
 
         <!-- Заголовок экрана -->
         <TextView
             android:id="@+id/tvTitle1"
-            style="@style/MyTitleText"
-            android:text="Activity 1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:textColor="?attr/colorOnBackground"
+            android:layout_marginBottom="8dp" />
 
         <!-- ФИО и группа -->
         <TextView
             android:id="@+id/tvStudent"
-            style="@style/MyText"
-            android:text="Морозов Даниил Артемович, группа ИВТ-XX"
-            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Морозов Даниил Артемович, группа ИВТ-XX"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="?attr/colorOnBackground"
+            android:layout_marginBottom="16dp" />
 
         <!-- Подсказка -->
         <TextView
             android:id="@+id/tvHint"
-            style="@style/MyText"
-            android:text="Введите текст ниже:"
-            android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Введите текст ниже:"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?attr/colorOnBackground"
+            android:layout_marginBottom="8dp" />
 
         <!-- Поле ввода -->
-        <EditText
-            android:id="@+id/etInput"
-            style="@style/MyEditTextStyle"
-            android:hint="Ваш текст"
-            android:layout_marginTop="8dp"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="Ваш текст"
+            app:boxStrokeColor="?attr/colorPrimary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorOnBackground"
+                android:textColorHint="?attr/colorOnBackground" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Кнопка перехода -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNext"
-            style="@style/MyMaterialButtonStyle"
-            android:text="Перейти на 2"
-            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Перейти на 2"
+            style="?attr/materialButtonStyle"
+            android:layout_marginTop="24dp" />
 
     </LinearLayout>
 </ScrollView>
