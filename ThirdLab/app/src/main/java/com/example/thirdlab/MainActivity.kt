@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Кнопка "Перейти на 2"
+
         binding.btnNext.setOnClickListener {
             val text = binding.etInput.text?.toString().orEmpty()
             val intent = Intent(this, SecondActivity::class.java).apply {

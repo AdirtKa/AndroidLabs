@@ -15,11 +15,10 @@ class SecondActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val received = intent.getStringExtra(MainActivity.EXTRA_USER_TEXT).orEmpty()
-        binding.tvResult.text = if (received.isBlank()) "(пусто)" else received
+        binding.tvResult.text = received.ifBlank { "(пусто)" }
 
-        // Кнопка "назад"
         binding.btnBack.setOnClickListener {
-            finish() // вернёт на 1 activity
+            finish()
         }
     }
 }
