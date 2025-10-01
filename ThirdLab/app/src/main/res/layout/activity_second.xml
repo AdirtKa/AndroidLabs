@@ -6,44 +6,48 @@
 
     <LinearLayout
         style="@style/MyCard"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="bottom|right"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <!-- Заголовок экрана -->
         <TextView
             android:id="@+id/tvTitle2"
             style="@style/MyTitleText"
-            android:text="Activity 2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Activity 2" />
 
         <!-- Подводка -->
         <TextView
             android:id="@+id/tvFromFirst"
             style="@style/MyText"
-            android:text="В первом окне вы напечатали:"
-            android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="monospace"
+            android:text="В первом окне вы напечатали:" />
 
         <!-- Полученный текст -->
         <TextView
             android:id="@+id/tvResult"
             style="@style/MyText"
-            android:textSize="18sp"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="18sp" />
 
         <!-- Кнопка назад -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBack"
             style="@style/MyMaterialButtonStyle"
-            android:text="Вернуться на 1 экран"
-            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Вернуться на 1 экран" />
 
     </LinearLayout>
 </ScrollView>

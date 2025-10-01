@@ -18,21 +18,24 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 
-
-
+/**
+ * Отображение одного твита.
+ *
+ * @param tweet данные твита
+ * @param onAuthorClick обработчик клика по автору
+ */
 @Composable
-fun TweetItem(tweet: Tweet) {
+fun TweetItem(
+    tweet: Tweet,
+    onAuthorClick: (String) -> Unit
+) {
     var isPressed by remember { mutableStateOf(false) }
     var isExpanded by remember { mutableStateOf(false) }
 
     val backgroundColor by animateColorAsState(
         targetValue = if (isPressed) Color.LightGray else Color.White
     )
-
     val scale by animateFloatAsState(
         targetValue = if (isPressed) 0.95f else 1f
     )
@@ -43,6 +46,7 @@ fun TweetItem(tweet: Tweet) {
             .scale(scale)
             .background(backgroundColor)
             .clickable {
+                // клик по самому твиту — раскрыть/свернуть описание
                 isPressed = true
                 isExpanded = !isExpanded
             }
@@ -57,7 +61,17 @@ fun TweetItem(tweet: Tweet) {
                     .clip(CircleShape)
             )
             Spacer(modifier = Modifier.width(12.dp))
-            Text(text = tweet.text)
+            Column {
+                Text(text = tweet.text)
+                // 👇 клик только по автору
+                Text(
+                    text = "Автор: ${tweet.author}",
+                    color = Color.Gray,
+                    modifier = Modifier.clickable {
+                        onAuthorClick(tweet.author)
+                    }
+                )
+            }
         }
 
         AnimatedVisibility(visible = isExpanded) {
@@ -70,34 +84,11 @@ fun TweetItem(tweet: Tweet) {
         }
     }
 
+    // небольшой визуальный эффект нажатия
     if (isPressed) {
-        LaunchedEffect(Unit) {
+        LaunchedEffect(isPressed) {
             delay(150)
             isPressed = false
         }
     }
-}
-@Preview(showBackground = true)
-@Composable
-fun PreviewTweetItem(
-    @PreviewParameter(TweetPreviewProvider::class) tweet: Tweet
-) {
-    TweetItem(tweet = tweet)
-}
-
-
-// Провайдер тестовых твитов
-class TweetPreviewProvider : PreviewParameterProvider<Tweet> {
-    override val values = sequenceOf(
-        Tweet(
-            imageResId = R.drawable.avatar1,
-            text = "Пример твита",
-            description = "Это описание поста для превью."
-        ),
-        Tweet(
-            imageResId = R.drawable.avatar2,
-            text = "Kotlin рулит 🚀",
-            description = "Compose делает UI быстрее и проще."
-        )
-    )
 }
