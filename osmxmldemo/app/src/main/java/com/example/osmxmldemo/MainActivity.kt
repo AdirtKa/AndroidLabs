@@ -36,10 +36,15 @@ class MainActivity : AppCompatActivity() {
         map.setTileSource(TileSourceFactory.MAPNIK)
         map.setMultiTouchControls(true)
         map.controller.setZoom(13.0)
-        map.controller.setCenter(GeoPoint(52.370216, 4.895168)) // Амстердам
+        map.controller.setCenter(GeoPoint(48.4808, 135.0928)) // Хабаровск
+
+        // Провайдер геолокации: GPS + сеть
+        val provider = GpsMyLocationProvider(this).apply {
+            addLocationSource(android.location.LocationManager.NETWORK_PROVIDER)
+        }
 
         // Оверлей геолокации
-        locationOverlay = MyLocationNewOverlay(GpsMyLocationProvider(this), map).apply {
+        locationOverlay = MyLocationNewOverlay(provider, map).apply {
             enableMyLocation()
             enableFollowLocation()
         }
@@ -65,10 +70,9 @@ class MainActivity : AppCompatActivity() {
             if (loc != null) {
                 map.controller.animateTo(loc)
             } else {
-                Toast.makeText(this, "Ожидание GPS...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Ожидание GPS/сети...", Toast.LENGTH_SHORT).show()
             }
         }
-
 
         // FAB: поставить маркер в центре
         binding.fabMarker.setOnClickListener {

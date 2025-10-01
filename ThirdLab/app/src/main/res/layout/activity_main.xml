@@ -60,11 +60,11 @@
         <!-- Кнопка перехода -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Перейти на 2"
             style="?attr/materialButtonStyle"
-            android:layout_marginTop="24dp" />
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:layout_marginTop="24dp"
+            android:text="Перейти на 2" />
 
     </LinearLayout>
 </ScrollView>
