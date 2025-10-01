@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -60,10 +61,14 @@ class MainActivity : AppCompatActivity() {
 
         // FAB: перейти к моему местоположению
         binding.fabMyLocation.setOnClickListener {
-            locationOverlay.myLocation?.let { geo ->
-                map.controller.animateTo(geo)
+            val loc = locationOverlay.myLocation
+            if (loc != null) {
+                map.controller.animateTo(loc)
+            } else {
+                Toast.makeText(this, "Ожидание GPS...", Toast.LENGTH_SHORT).show()
             }
         }
+
 
         // FAB: поставить маркер в центре
         binding.fabMarker.setOnClickListener {
