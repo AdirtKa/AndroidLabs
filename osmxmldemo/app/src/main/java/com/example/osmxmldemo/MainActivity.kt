@@ -104,6 +104,7 @@ class MainActivity : AppCompatActivity() {
             GeoPoint(c.latitude + 0.015, c.longitude + 0.015),
             GeoPoint(c.latitude - 0.005, c.longitude + 0.02),
             GeoPoint(c.latitude - 0.01, c.longitude - 0.005),
+            GeoPoint(c.latitude + 0.01, c.longitude - 0.01)
         )
         val line = Polyline().apply { setPoints(pts) }
         mapView.overlays.add(line)
