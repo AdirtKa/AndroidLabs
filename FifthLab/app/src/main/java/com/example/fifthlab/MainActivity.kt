@@ -47,7 +47,7 @@ fun AppNavigation() {
             arguments = listOf(navArgument("authorName") { type = NavType.StringType })
         ) { backStackEntry ->
             val name = backStackEntry.arguments?.getString("authorName") ?: "Неизвестный"
-            AuthorScreen(authorName = name)
+            AuthorScreen(authorName = name, onBackClick = { navController.popBackStack() })
         }
     }
 }
