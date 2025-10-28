@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp"
+    android:background="@color/background_color"
+    tools:context=".MainActivity">
+
+    <!-- ========== ЗАГОЛОВОК ========== -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="12dp" />
+
+    <!-- ========== РЯД 1: ДВА МЕСТА ДЛЯ ФОТОГРАФИЙ ========== -->
+
+    <!-- Левое место: ВАШЕ ФОТО -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardCameraPhoto"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline50"
+        android:layout_marginEnd="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/image_placeholder">
+
+            <!-- Заголовок для левой фотографии -->
+            <TextView
+                android:id="@+id/tvCameraLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/camera_photo"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_text"
+                android:padding="8dp" />
+
+            <!-- ImageView для вашего фото с камеры -->
+            <ImageView
+                android:id="@+id/ivCameraPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/camera_photo_desc"
+                android:background="@color/image_placeholder" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Вертикальная направляющая (50% ширины экрана) -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- Правое место: АНИМЕ ПЕРСОНАЖ -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardAnimeImage"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toEndOf="@id/guideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/image_placeholder">
+
+            <!-- Заголовок для правой фотографии -->
+            <TextView
+                android:id="@+id/tvAnimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/anime_character"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_text"
+                android:padding="8dp" />
+
+            <!-- ImageView для аниме персонажа -->
+            <ImageView
+                android:id="@+id/ivAnimeImage"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/anime_image_desc"
+                android:background="@color/image_placeholder" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- ========== РЯД 2: ДВЕ КНОПКИ ========== -->
+
+    <!-- Левая кнопка: СДЕЛАТЬ ФОТО -->
+    <Button
+        android:id="@+id/btnTakePhoto"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="6dp"
+        android:backgroundTint="@color/button_primary"
+        android:elevation="4dp"
+        android:padding="12dp"
+        android:text="@string/take_photo"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/guideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardCameraPhoto" />
+
+    <!-- Правая кнопка: ПОЛУЧИТЬ АНИМЕ -->
+    <Button
+        android:id="@+id/btnGetAnimeImage"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/button_secondary"
+        android:elevation="4dp"
+        android:padding="12dp"
+        android:text="@string/get_anime_image"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline50"
+        app:layout_constraintTop_toBottomOf="@id/cardAnimeImage" />
+
+    <!-- ========== ProgressBar ДЛЯ ЗАГРУЗКИ ========== -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/btnGetAnimeImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <!-- ========== ИНФОРМАЦИОННОЕ СООБЩЕНИЕ ========== -->
+    <TextView
+        android:id="@+id/tvInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Сделайте фото слева и получите аниме персонажа справа!"
+        android:textSize="11sp"
+        android:textColor="@color/primary_text"
+        android:gravity="center"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/progressBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+
+        android:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

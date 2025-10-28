@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Camera Lab 14</string>
+    <string name="app_title">Фото vs Аниме Персонаж</string>
+    <string name="take_photo">📸 Сделать фото</string>
+    <string name="get_anime_image">✨ Загрузить аниме</string>
+    <string name="camera_photo">Ваше фото</string>
+    <string name="anime_character">Аниме персонаж</string>
+    <string name="camera_photo_desc">Фотография с камеры</string>
+    <string name="anime_image_desc">Аниме персонаж</string>
+    <string name="permission_denied">Необходимо разрешение для использования камеры</string>
+    <string name="camera_error">Ошибка при работе с камерой</string>
+    <string name="network_error">Ошибка сети. Проверьте подключение к интернету</string>
+    <string name="loading">Загрузка аниме персонажа...</string>
+</resources>
