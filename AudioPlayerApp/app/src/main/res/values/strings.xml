@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Название приложения -->
+    <string name="app_name">Аудио Плеер</string>
+
+    <!-- UI элементы -->
+    <string name="app_title">Аудио Плеер</string>
+    <string name="app_description">Нажмите кнопку для воспроизведения звука</string>
+    <string name="btn_play">▶ Воспроизвести</string>
+    <string name="btn_pause">⏸ Пауза</string>
+    <string name="btn_stop">⏹ Остановить</string>
+    <string name="file_info">Файл: sample_sound.mp3</string>
+    <string name="sound_icon_description">Иконка звука</string>
+
+    <!-- Сообщения Toast -->
+    <string name="playback_started">Воспроизведение началось</string>
+    <string name="playback_resumed">Воспроизведение продолжено</string>
+    <string name="playback_paused">Воспроизведение приостановлено</string>
+    <string name="playback_stopped">Воспроизведение остановлено</string>
+    <string name="playback_completed">Воспроизведение завершено</string>
+    <string name="playback_error">Ошибка воспроизведения</string>
+    <string name="initialization_error">Ошибка инициализации плеера</string>
+    <string name="player_not_initialized">Плеер не инициализирован</string>
+</resources>
